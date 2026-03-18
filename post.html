@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<div class="container">
+
+  <div class="header">
+    <h1 id="post-title"></h1>
+    <p class="meta">Publicado por Litax</p>
+  </div>
+
+  <div class="post show">
+    <p id="post-content"></p>
+  </div>
+
+  <hr style="opacity:0.2; margin:40px 0;">
+
+  <h2>💬 Comentarios</h2>
+
+  <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="f31f1b70-3661-4e30-8006-0596a6906b02"
+  ></div>
+
+</div>
+
+<script>
+// obtener ID del post
+const params = new URLSearchParams(window.location.search);
+const postId = params.get("id");
+
+// cargar contenido
+fetch(`content/${postId}.json`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("post-title").textContent = data.title;
+    document.getElementById("post-content").textContent = data.content;
+
+    loadCusdis(postId, data.title);
+  });
+
+// cargar cusdis dinámico
+function loadCusdis(id, title) {
+  const el = document.getElementById("cusdis_thread");
+
+  el.setAttribute("data-page-id", id);
+  el.setAttribute("data-page-title", title);
+  el.setAttribute("data-page-url", window.location.href);
+  el.setAttribute("data-theme", localStorage.getItem("theme") || "dark");
+
+  const script = document.createElement("script");
+  script.src = "https://cusdis.com/js/cusdis.es.js";
+  script.async = true;
+  script.defer = true;
+
+  document.body.appendChild(script);
+}
+
+// tema
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  const theme = document.body.classList.contains("light") ? "light" : "dark";
+  localStorage.setItem("theme", theme);
+}
+
+// cargar tema
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light");
+}
+</script>
+
+</body>
+</html>

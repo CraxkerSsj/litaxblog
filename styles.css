@@ -13,26 +13,18 @@ body {
   transition: 0.3s;
 }
 
-/* MODO CLARO */
 body.light {
   --bg: #ffffff;
   --card: #f1f1f1;
   --text: #111;
 }
 
-/* FONDO OPCIONAL */
-body.bg-image {
-  background: url("bg.jpg") center/cover no-repeat fixed;
-}
-
-/* CONTENEDOR */
 .container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
 }
 
-/* HEADER */
 .header {
   text-align: center;
   margin-bottom: 40px;
@@ -46,7 +38,6 @@ body.bg-image {
   opacity: 0.7;
 }
 
-/* BOTÓN TEMA */
 .theme-btn {
   position: fixed;
   top: 15px;
@@ -59,7 +50,6 @@ body.bg-image {
   color: var(--text);
 }
 
-/* POSTS */
 .post {
   background: var(--card);
   padding: 20px;
@@ -70,7 +60,6 @@ body.bg-image {
   transform: translateY(30px);
   transition: all 0.5s ease;
 
-  backdrop-filter: blur(10px);
   border: 1px solid #ffffff10;
 }
 
@@ -79,10 +68,19 @@ body.bg-image {
   transform: translateY(0);
 }
 
+.post:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #7a6cff40;
+}
+
 .post p {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.7;
-  font-size: 1.05em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .meta {
@@ -96,19 +94,6 @@ hr {
   background: #ffffff20;
 }
 
-/* HOVER */
-.post:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px #7a6cff55;
-}
-
-/* LINKS */
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-/* EFECTO FONDO */
 body::before {
   content: "";
   position: fixed;
@@ -118,13 +103,8 @@ body::before {
   z-index: -1;
 }
 
-/* RESPONSIVE */
 @media (max-width: 600px) {
   .container {
     padding: 10px;
-  }
-
-  .post {
-    padding: 15px;
   }
 }

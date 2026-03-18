@@ -78,6 +78,15 @@ body.light {
   line-height: 1.7;
 }
 
+#cusdis_thread {
+  margin-top: 30px;
+}
+
+/* mejora visual */
+#cusdis_thread iframe {
+  border-radius: 12px;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;

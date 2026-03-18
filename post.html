@@ -28,10 +28,8 @@
 
   <h2>💬 Comentarios</h2>
 
-  <div id="cusdis_thread"
-    data-host="https://cusdis.com"
-    data-app-id="f31f1b70-3661-4e30-8006-0596a6906b02"
-  ></div>
+  <!-- DISQUS -->
+  <div id="disqus_thread"></div>
 
 </div>
 
@@ -40,31 +38,30 @@
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 
-// cargar contenido
+// cargar contenido del post
 fetch(`content/${postId}.json`)
   .then(res => res.json())
   .then(data => {
     document.getElementById("post-title").textContent = data.title;
     document.getElementById("post-content").textContent = data.content;
 
-    loadCusdis(postId, data.title);
+    loadDisqus(postId);
   });
 
-// cargar cusdis dinámico
-function loadCusdis(id, title) {
-  const el = document.getElementById("cusdis_thread");
+// cargar DISQUS dinámico
+function loadDisqus(id) {
 
-  el.setAttribute("data-page-id", id);
-  el.setAttribute("data-page-title", title);
-  el.setAttribute("data-page-url", window.location.href);
-  el.setAttribute("data-theme", localStorage.getItem("theme") || "dark");
+  var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = id;
+  };
 
-  const script = document.createElement("script");
-  script.src = "https://cusdis.com/js/cusdis.es.js";
-  script.async = true;
-  script.defer = true;
-
-  document.body.appendChild(script);
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://litaxblog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.body).appendChild(s);
+  })();
 }
 
 // tema
@@ -74,7 +71,7 @@ function toggleTheme(){
   localStorage.setItem("theme", theme);
 }
 
-// cargar tema
+// cargar tema guardado
 if(localStorage.getItem("theme") === "light"){
   document.body.classList.add("light");
 }

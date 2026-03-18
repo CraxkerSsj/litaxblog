@@ -6,7 +6,7 @@
 <title>Mi primer post</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -35,23 +35,50 @@
     data-page-id="post1"
     data-page-url="https://craxkerssj.github.io/litaxblog/posts/post1.html"
     data-page-title="Mi primer post"
+    data-theme="dark"
   ></div>
-
-  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 </div>
 
 <script>
-// MODO OSCURO
-function toggleTheme(){
-  document.body.classList.toggle("light");
-  localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+// CARGAR CUSDIS DINÁMICO
+function loadCusdis(theme = "dark") {
+  const el = document.getElementById("cusdis_thread");
+  el.setAttribute("data-theme", theme);
+
+  // evitar duplicar script
+  if (!document.getElementById("cusdis_script")) {
+    const script = document.createElement("script");
+    script.src = "https://cusdis.com/js/cusdis.es.js";
+    script.async = true;
+    script.defer = true;
+    script.id = "cusdis_script";
+    document.body.appendChild(script);
+  }
 }
 
-// CARGAR TEMA
-if(localStorage.getItem("theme") === "light"){
+// MODO OSCURO / CLARO
+function toggleTheme(){
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+  const theme = isLight ? "light" : "dark";
+
+  localStorage.setItem("theme", theme);
+
+  // recargar cusdis con nuevo tema
+  document.getElementById("cusdis_thread").innerHTML = "";
+  loadCusdis(theme);
+}
+
+// CARGA INICIAL
+const savedTheme = localStorage.getItem("theme") || "dark";
+
+if(savedTheme === "light"){
   document.body.classList.add("light");
 }
+
+loadCusdis(savedTheme);
 </script>
 
 </body>

@@ -6,7 +6,7 @@
 <title>Mi primer post</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -28,24 +28,27 @@
 
   <h2>💬 Comentarios</h2>
 
-  <!-- COMENTARIOS -->
-  <script src="https://utteranc.es/client.js"
-        repo="CraxkerSsj/litaxblog"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-  </script>
+  <!-- CUSDIS -->
+  <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="f31f1b70-3661-4e30-8006-0596a6906b02"
+    data-page-id="post1"
+    data-page-url="https://craxkerssj.github.io/litaxblog/posts/post1.html"
+    data-page-title="Mi primer post"
+  ></div>
+
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 </div>
 
 <script>
-// tema
+// MODO OSCURO
 function toggleTheme(){
   document.body.classList.toggle("light");
   localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
 }
 
+// CARGAR TEMA
 if(localStorage.getItem("theme") === "light"){
   document.body.classList.add("light");
 }

@@ -79,6 +79,23 @@ body.bg-image {
   transform: translateY(0);
 }
 
+.post p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.7;
+  font-size: 1.05em;
+}
+
+.meta {
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #ffffff20;
+}
+
 /* HOVER */
 .post:hover {
   transform: scale(1.02);

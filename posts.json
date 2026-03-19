@@ -4,14 +4,11 @@
     "title": "Mi primer post",
     "desc": "Este es mi blog ahora fuera de Blogger 💀",
     "url": "post.html?id=post1"
-  }
-]
-
-[
+  },
   {
     "id": "post2",
     "title": "Mi segundo post",
-    "desc": "Post hecho desde el cell como prueba ozyozy",
+    "desc": "Post hecho desde el celular",
     "url": "post.html?id=post2"
   }
 ]

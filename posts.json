@@ -6,3 +6,11 @@
     "url": "post.html?id=post1"
   }
 ]
+[
+  {
+    "id": "post2",
+    "title": "Mi segundo post",
+    "desc": "Post hecho desde el cell como prueba ozyozy",
+    "url": "post.html?id=post2"
+  }
+]

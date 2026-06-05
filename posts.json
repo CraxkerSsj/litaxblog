@@ -2,13 +2,13 @@
   {
     "id": "post1",
     "title": "Mi primer post",
-    "desc": "Este es mi blog ahora fuera de Blogger 💀",
+    "desc": "Post hecho desde el celular",
     "url": "post.html?id=post1"
   },
   {
     "id": "post2",
     "title": "Mi segundo post",
-    "desc": "Post hecho desde el celular",
+    "desc": "ns we",
     "url": "post.html?id=post2"
   }
 ]
